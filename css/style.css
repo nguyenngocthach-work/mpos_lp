@@ -1,62 +1,129 @@
 :root {
-  --blue:#0074be;
-  --red:#d71920;
-  --gray:#2b2b2b;
+  --blue: #0074be;
+  --red: #d71920;
+  --gray: #2b2b2b;
 }
 
 .main-color {
-	color: #0b3c78;	
+  color: #0b3c78;
 }
 
-* { box-sizing:border-box; margin:0; font-family:system-ui; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: system-ui;
+}
 
 .container {
-  max-width:1200px;
-  margin:auto;
-  padding:24px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
 }
 
-h1,h2,h3 { margin-bottom:12px; }
-p { color:#444; }
-h1 {	
-	font-size: 40px;
+h1,
+h2,
+h3 {
+  margin-bottom: 12px;
+}
+p {
+  color: #444;
+}
+h1 {
+  font-size: 40px;
 }
 
-h2 {	
-	font-size: 32px;
+h2 {
+  font-size: 32px;
 }
 
-h3 {	
-	font-size: 24px;
+h3 {
+  font-size: 24px;
 }
 
 .red {
-	color: red;
-	
+  color: red;
 }
 .backgrd {
-	
-	color: #e5edf8;
+  color: #e5edf8;
 }
 .center {
-	text-align: center;	
+  text-align: center;
 }
 
 .compare {
   display: flex;
-  justify-content: center;  
-  gap: 32px;                
+  justify-content: center;
+  gap: 32px;
   margin-top: 32px;
   flex-wrap: wrap;
 }
 
+.box-wrapper {
+  width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-wrapper {
+  width: 520px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.highlight-wrapper .box {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .compare .box {
-  width: 520px;             
+  width: 520px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 24px;
+}
+
+.compare .box-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.compare .box-text {
+  flex: 1;
+}
+
+.compare .box-image {
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compare .box-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.compare .box .note,
+.highlight-wrapper .note {
+  margin-top: 0; /* Không cần margin-top vì đã có gap trong wrapper */
+  text-align: center; /* Căn giữa */
+  font-weight: 800; /* In đậm mạnh */
+  font-size: 18px; /* Tăng kích thước chữ một chút cho nổi bật */
+  color: #222;
 }
 .compare ul {
   list-style: none;
@@ -83,63 +150,124 @@ h3 {
   position: absolute;
   left: 0;
   top: 0;
-  color: #0074be;
+  color: #757677;
   font-weight: 900;
 }
 .box.highlight {
-  border: 2px solid var(--blue);
+  border: 1px solid #ddd;
+  /* background: #f5f5f5; Màu nền gray */
 }
 
 .box.highlight h3 {
   color: var(--blue);
 }
+
 .btn {
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:6px;
-  font-weight:600;
-  text-decoration:none;
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.btn.primary { background:var(--blue); color:#fff; }
-.btn.red { background:var(--red); color:#fff; }
+.btn.primary {
+  background: var(--blue);
+  color: #fff;
+}
+.btn.red {
+  background: var(--red);
+  color: #fff;
+}
 .btn.outline {
-  border:2px solid var(--blue);
-  color:var(--blue);
+  border: 2px solid var(--blue);
+  color: var(--blue);
 }
 
 /* HERO */
 .hero {
-  background:#f3f5f7;
+  background: #f3f5f7;
+  position: relative;
+  overflow: hidden;
+}
+.hero .container {
+  padding: 0;
 }
 .hero-grid {
-  display:grid;
-  gap:40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+  position: relative;
+  min-height: 500px;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
-.hero-image img { max-width:100%; }
+.hero-content {
+  z-index: 2;
+  padding: 24px;
+}
+
+.hero-image {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  overflow: hidden;
+  min-height: 500px;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tạo lớp phủ gradient đè lên ảnh */
+.hero-image::after {
+  content: "";
+  position: absolute;
+  z-index: 3; /* Nằm trên ảnh */
+  pointer-events: none; /* Cho phép click xuyên qua */
+
+  /* Thiết lập mặc định cho Desktop (Mờ từ trái sang phải) */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25%; /* Độ rộng vùng làm mờ, bạn có thể chỉnh 20% - 40% */
+
+  /* Gradient màu trùng với background #f3f5f7 */
+  background: linear-gradient(
+    to right,
+    #f3f5f7 10%,
+    rgba(243, 245, 247, 0) 100%
+  );
+}
 
 /* LIST */
-.checklist { list-style:none; margin:20px 0; }
+.checklist {
+  list-style: none;
+  margin: 20px 0;
+}
 .checklist li::before {
-  content:"✔ ";
-  color:var(--gray);
+  content: "✔ ";
+  color: var(--gray);
   line-height: 2;
   font-weight: 900;
   margin-right: 4px;
 }
 
-
-
 .box {
-  padding:20px;
-  background:#fff;
-  border:1px solid #ddd;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
 }
-.box.highlight { border-color:var(--blue); }
 
 /* PRODUCTS */
 .products {
-	background:#eef2f8;
+  background: #eef2f8;
 }
 .product-grid {
   display: grid;
@@ -150,7 +278,7 @@ h3 {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   padding: 16px;
   text-align: left;
   display: flex;
@@ -180,20 +308,24 @@ h3 {
 }
 
 /* CTA */
-.cta { text-align:center; }
+.cta {
+  text-align: center;
+}
 .cta-buttons {
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  justify-content:center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 
 /* FOOTER */
 .footer {
-  background:#111;
-  color:#fff;
+  background: #111;
+  color: #fff;
 }
-.footer a { color:#fff; }
+.footer a {
+  color: #fff;
+}
 
 /* =======================
    BEWÄHRT IM HANDEL
@@ -215,7 +347,7 @@ h3 {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   text-align: center;
 }
@@ -270,8 +402,8 @@ h3 {
 }
 
 .btn.primary:hover {
-  background: #fff;          /* nền trắng */
-  color: var(--blue);        /* chữ xanh */
+  background: #fff; /* nền trắng */
+  color: var(--blue); /* chữ xanh */
   border-color: var(--blue); /* viền xanh */
 }
 
@@ -280,6 +412,26 @@ h3 {
   .compare {
     flex-direction: column;
     align-items: center;
+  }
+  .compare .box {
+    width: 100%;
+    max-width: 520px;
+  }
+  .box-wrapper {
+    width: 100%;
+    max-width: 520px;
+  }
+  .highlight-wrapper {
+    width: 100%;
+    max-width: 520px;
+  }
+  .compare .box-content {
+    flex-direction: column;
+  }
+  .compare .box-image {
+    width: 100%;
+    height: 200px;
+    margin-top: 16px;
   }
 }
 
@@ -292,5 +444,35 @@ h3 {
 @media (max-width: 640px) {
   .product-grid {
     grid-template-columns: 1fr;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-content {
+    padding-right: 0;
+    margin-bottom: 24px;
+  }
+  .hero-image {
+    padding-left: 0;
+    min-height: auto;
+  }
+  .hero-content {
+    padding: 24px;
+  }
+  /* Xử lý Responsive cho Mobile - Gradient từ trên xuống dưới */
+  .hero-image::after {
+    width: 100%; /* Phủ toàn bộ chiều ngang */
+    height: 150px; /* Chiều cao vùng mờ */
+    top: 0;
+    left: 0;
+    bottom: auto; /* Bỏ bottom để chỉnh theo height */
+
+    /* Gradient từ màu nền xuống trong suốt */
+    background: linear-gradient(
+      to bottom,
+      #f3f5f7 0%,
+      rgba(243, 245, 247, 0) 100%
+    );
   }
 }
