@@ -29,7 +29,8 @@ p {
   color: #444;
 }
 h1 {
-  font-size: 40px;
+  font-size: clamp(26px, 5vw, 40px);
+  line-height: 1.2;
 }
 
 h2 {
@@ -204,7 +205,7 @@ h3 {
   position: relative;
   min-height: 500px;
   padding: 0;
-  max-width: 100%;
+  /*max-width: 100%;a*/
   overflow: hidden;
 }
 .hero-content {
@@ -478,5 +479,40 @@ h3 {
       #f3f5f7 0%,
       rgba(243, 245, 247, 0) 100%
     );
+  }
+  
+}
+
+/* =======================
+   FIX HERO RESPONSIVE
+======================= */
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-content .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .checklist {
+    margin-bottom: 20px;
+  }
+  .hero-image {
+    position: relative;      /* ⬅️ QUAN TRỌNG */
+    width: 100%;
+    min-height: 240px;
+    height: auto;
+  }
+
+  .hero-image img {
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  .hero .container {
+    padding: 0 16px;
   }
 }
