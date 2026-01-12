@@ -481,29 +481,27 @@
           track.style.transform = `translateX(${translateX}%)`;
         }
 
+        // Nút Next (Đã thêm logic vòng lặp: đến cuối sẽ quay về đầu)
         nextBtn.addEventListener("click", () => {
           if (currentIndex < totalSlides - 1) {
             currentIndex++;
+          } else {
+            currentIndex = 0; // Quay về slide đầu tiên
           }
           updateSlider();
         });
 
+        // Nút Prev (Đã thêm logic vòng lặp: đang ở đầu sẽ về cuối)
         prevBtn.addEventListener("click", () => {
           if (currentIndex > 0) {
             currentIndex--;
+          } else {
+            currentIndex = totalSlides - 1; // Nhảy tới slide cuối cùng
           }
           updateSlider();
         });
 
-        // Tự động chạy slide sau mỗi 5 giây (Tùy chọn)
-        setInterval(() => {
-          if (currentIndex < totalSlides - 1) {
-            currentIndex++;
-          } else {
-            currentIndex = 0;
-          }
-          updateSlider();
-        }, 5000);
+        // ĐÃ XÓA PHẦN SETINTERVAL (Slide sẽ đứng yên mãi mãi)
       });
     </script>
   </body>
