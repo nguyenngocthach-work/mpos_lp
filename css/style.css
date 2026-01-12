@@ -342,6 +342,52 @@ h3 {
 }
 
 /* =======================
+   FIX USP RESPONSIVE
+   (4 items trên 1 hàng, chỉ tách 2 hàng khi mobile nhỏ)
+======================= */
+
+.hero .usps {
+  padding: 10px 0;
+  width: 100%;
+  overflow: hidden; /* Tránh thanh cuộn ngang nếu chữ quá dài */
+}
+
+.usps-list {
+  display: flex;
+  flex-wrap: nowrap; /* Quan trọng: Ép không xuống dòng */
+  justify-content: space-between; /* Chia đều khoảng cách */
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa các items nhỏ lại để tiết kiệm chỗ */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+}
+
+.usps-list li {
+  position: relative;
+  flex: 1; /* Chia đều chiều rộng cho 4 cột */
+  padding-left: 20px; /* Chừa chỗ cho dấu tick */
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #333;
+  white-space: normal;
+  text-align: left;
+}
+
+.usps-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0; /* Căn chỉnh lại dấu tick */
+  color: #757677;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* =======================
    BEWÄHRT IM HANDEL
 ======================= */
 
@@ -421,7 +467,20 @@ h3 {
   border-color: var(--blue); /* viền xanh */
 }
 
-/* RESPONSIVE */
+/* --- TÙY CHỈNH CHO MÀN HÌNH TRUNG BÌNH (TABLET) --- 
+   Giữ nguyên 1 hàng nhưng thu nhỏ chữ 
+*/
+@media (max-width: 1024px) {
+  .usps-list li {
+    font-size: 12px; /* Thu nhỏ chữ để vừa 1 hàng */
+    padding-left: 16px;
+  }
+  .usps-list li::before {
+    font-size: 14px;
+    top: 1px;
+  }
+}
+
 @media (max-width: 768px) {
   .compare {
     flex-direction: column;
@@ -446,6 +505,25 @@ h3 {
     width: 100%;
     height: 200px;
     margin-top: 16px;
+  }
+}
+
+/* --- TÙY CHỈNH CHO MÀN HÌNH NHỎ (MOBILE < 640px) --- 
+   Lúc này mới tách thành 2 hàng (2 cột x 2 hàng)
+*/
+@media (max-width: 640px) {
+  .usps-list {
+    flex-wrap: wrap; /* Cho phép xuống dòng */
+    justify-content: flex-start;
+  }
+
+  .usps-list li {
+    flex: 0 0 50%; /* Chiếm 50% chiều rộng -> 2 items/hàng */
+    max-width: 50%;
+    margin-bottom: 8px; /* Khoảng cách giữa 2 hàng */
+    font-size: 13px; /* Tăng lại size chữ cho dễ đọc trên mobile */
+    box-sizing: border-box; /* Đảm bảo padding không làm vỡ layout */
+    padding-right: 5px;
   }
 }
 
@@ -489,7 +567,6 @@ h3 {
       rgba(243, 245, 247, 0) 100%
     );
   }
-  
 }
 
 /* =======================
@@ -510,7 +587,7 @@ h3 {
     margin-bottom: 20px;
   }
   .hero-image {
-    position: relative;      /* ⬅️ QUAN TRỌNG */
+    position: relative; /* ⬅️ QUAN TRỌNG */
     width: 100%;
     min-height: 240px;
     height: auto;
@@ -536,4 +613,126 @@ a.btn.red:hover {
   background-color: var(--blue);
   border-color: var(--blue);
   color: #fff;
+}
+
+/* =======================
+   FAQ SECTION STYLING
+======================= */
+
+.faq-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.faq-container h2 {
+  text-align: center;
+  color: #1a2b4b; /* Dark Navy Color */
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+/* Underline decoration */
+.faq-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background-color: #d1d5db;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #1a2b4b;
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:hover {
+  background-color: #eef1f5;
+}
+
+.faq-item .question-text {
+  font-size: 16px;
+}
+
+.faq-item .icon {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .icon {
+  transform: rotate(45deg);
+}
+
+.faq-item .answer {
+  padding: 20px;
+  background-color: #fff;
+  border-top: 1px solid #e5e7eb;
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.faq-item .answer p {
+  margin: 0 0 5px 0;
+  color: #4b5563;
+}
+
+/* =======================
+   NEW FAQ CTA STYLING
+======================= */
+
+.faq-cta {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #d1d5db; /* Thin gray line separator */
+  text-align: center;
+}
+
+.faq-cta h3 {
+  color: #1a2b4b;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.faq-cta p {
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+/* Reusing your existing .btn.primary styling */
+.faq-cta .btn {
+  display: inline-block;
 }
