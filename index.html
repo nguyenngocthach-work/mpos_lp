@@ -83,44 +83,91 @@
           <li>Persönliche Beratung</li>
         </ul>
       </section>
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="brand">
-            <img
-              src="./images/regalwobbler-logo.png"
-              width="280px"
-              alt="Regalwobbler Logo"
-            />
-          </span>
-          <h1 class="main-color">
-            Regalwobbler – kleine Bewegung, große Wirkung am Point of Sale
-          </h1>
-          <p>
-            <b>Regalwobbler</b> lenken den Blick direkt auf Ihr Produkt – ideal
-            für <b>Preisaktionen</b>, <b>Neuheiten</b> und <b>Promotions</b> im
-            LEH.
-          </p>
 
-          <ul class="checklist">
-            <li>Individuell bedruckbar</li>
-            <li>Keine Mindestmenge</li>
-            <li>Schnelle Produktentwicklung</li>
-          </ul>
+      <div class="hero-slider">
+        <div class="slider-track" id="sliderTrack">
+          <div class="slide">
+            <div class="container hero-grid">
+              <div class="hero-content">
+                <span class="brand">
+                  <img
+                    src="./images/regalwobbler-logo.png"
+                    width="280px"
+                    alt="Regalwobbler Logo"
+                  />
+                </span>
+                <h1 class="main-color">
+                  Kleine Bewegung,<br />Große Wirkung am Regal.
+                </h1>
+                <p>
+                  <b>Regalwobbler</b> lenken den Blick direkt auf Ihr Produkt –
+                  ideal für <b>Preisaktionen</b>, <b>Neuheiten</b> und
+                  <b>Promotions</b> im LEH.
+                </p>
 
-          <a
-            class="btn primary"
-            href="https://meinpointof.sale/group/15-regalwobbler"
-          >
-            Regalwobbler auswählen & konfigurieren
-          </a>
+                <ul class="checklist">
+                  <li>Individuell bedruckbar</li>
+                  <li>Keine Mindestmenge</li>
+                  <li>Schnelle Produktentwicklung</li>
+                </ul>
+
+                <a
+                  class="btn primary"
+                  href="https://meinpointof.sale/group/15-regalwobbler"
+                >
+                  Regalwobbler auswählen & konfigurieren
+                </a>
+              </div>
+
+              <div class="hero-image">
+                <img
+                  src="images/regalwobbler_new.png"
+                  alt="Regalwobbler im Supermarktregal"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="slide slide-2">
+            <div class="container hero-grid">
+              <div class="hero-content">
+                <span class="brand">
+                  <img
+                    src="./images/regalwobbler-logo.png"
+                    width="280px"
+                    alt="Regalwobbler Logo"
+                  />
+                </span>
+
+                <h1 class="main-color">
+                  Regalwobbler – kleine Bewegung, große Wirkung am Point of Sale
+                </h1>
+
+                <p class="slide-2-text">
+                  Individuell bedruckte Regalwobbler für mehr Aufmerksamkeit,
+                  Abverkauf und Impulskäufe im Handel.
+                </p>
+
+                <a
+                  class="btn primary slide-2-btn"
+                  href="https://meinpointof.sale/group/15-regalwobbler"
+                >
+                  Regalwobbler auswählen & konfigurieren
+                </a>
+              </div>
+
+              <div class="hero-image">
+                <img
+                  src="images/regalwobbler_new.png"
+                  alt="Regalwobbler Promotion"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-image">
-          <img
-            src="images/regalwobbler_new.png"
-            alt="Regalwobbler im Supermarktregal"
-          />
-        </div>
+        <button class="slider-btn prev" id="prevBtn">&#10094;</button>
+        <button class="slider-btn next" id="nextBtn">&#10095;</button>
       </div>
     </header>
 
@@ -418,5 +465,46 @@
         </div>
       </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.getElementById("sliderTrack");
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateSlider() {
+          const translateX = -(currentIndex * 100);
+          track.style.transform = `translateX(${translateX}%)`;
+        }
+
+        nextBtn.addEventListener("click", () => {
+          if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+          }
+          updateSlider();
+        });
+
+        prevBtn.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            currentIndex--;
+          }
+          updateSlider();
+        });
+
+        // Tự động chạy slide sau mỗi 5 giây (Tùy chọn)
+        setInterval(() => {
+          if (currentIndex < totalSlides - 1) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateSlider();
+        }, 5000);
+      });
+    </script>
   </body>
 </html>

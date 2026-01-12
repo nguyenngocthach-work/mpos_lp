@@ -273,6 +273,17 @@ h3 {
   margin-right: 4px;
 }
 
+/* Slide 2 styling - dãn dòng và căn chỉnh button */
+.slide-2 .slide-2-text {
+  line-height: 1.8;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.slide-2 .slide-2-btn {
+  margin-top: 60px; /* Tương đương với chiều cao của checklist (20px margin + 3 items) */
+}
+
 .box {
   padding: 20px;
   background: #fff;
@@ -735,4 +746,78 @@ a.btn.red:hover {
 /* Reusing your existing .btn.primary styling */
 .faq-cta .btn {
   display: inline-block;
+}
+
+/* =======================
+   HERO SLIDER STYLING
+======================= */
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Ẩn phần nội dung tràn ra ngoài */
+}
+
+.slider-track {
+  display: flex; /* Xếp các slide nằm ngang */
+  width: 100%;
+  transition: transform 0.5s ease-in-out; /* Hiệu ứng trượt mượt mà */
+}
+
+.slide {
+  min-width: 100%; /* Mỗi slide chiếm 100% chiều rộng khung */
+  box-sizing: border-box;
+}
+
+/* Đảm bảo nội dung bên trong slide vẫn giữ layout cũ */
+.slide .hero-grid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Buttons điều hướng */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #1a2b4b;
+  z-index: 10;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+/* Responsive cho nút bấm trên mobile */
+@media (max-width: 768px) {
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .prev {
+    left: 10px;
+  }
+  .next {
+    right: 10px;
+  }
 }
