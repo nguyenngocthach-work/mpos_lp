@@ -182,7 +182,16 @@ h3 {
 .btn.red {
   background: var(--red);
   color: #fff;
+  border: 2px solid var(--red);
+  transition: all 0.25s ease;
 }
+
+.btn.red:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
 .btn.outline {
   border: 2px solid var(--blue);
   color: var(--blue);
@@ -515,4 +524,16 @@ h3 {
   .hero .container {
     padding: 0 16px;
   }
+}
+a.btn.red {
+  background-color: var(--red);
+  color: #fff;
+  border: 2px solid var(--red);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+a.btn.red:hover {
+  background-color: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
 }
