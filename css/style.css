@@ -807,7 +807,63 @@ a.btn.red:hover {
   right: 20px;
 }
 
-/* Responsive cho nút bấm trên mobile */
+.pic-gallery {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.pic-gallery h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pic-gallery h2 {
+  font-size: 1.3rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+/* .gallery-grid img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+} */
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px; /* force uniform height */
+  object-fit: cover; /* crops while keeping proportions */
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 @media (max-width: 768px) {
   .slider-btn {
     width: 40px;
@@ -821,3 +877,169 @@ a.btn.red:hover {
     right: 10px;
   }
 }
+/* ===== Floating CTA Bar ===== */
+.cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f4f7fb;
+    border-top: 1px solid #e2e6ed;
+    z-index: 9999;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
+}
+/* Center content CTA bar */
+.cta-bar__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;                 
+    display: flex;
+    align-items: center;
+    justify-content: center;       
+    gap: 15px;                     
+}
+
+/* Center text */
+.cta-bar__features {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.cta-bar__features {
+    display: flex;
+    align-items: center;
+    gap: 10px;             
+}
+
+.cta-bar__features .divider {
+    width: 1px;
+    height: 18px;
+    background: #cfd6e3;
+    margin: 0 10px;         
+}
+
+
+.cta-bar__button {
+    padding: 14px 36px;
+}
+
+/* CTA Button */
+.cta-bar__button {
+	margin-left: 10px;
+    background: #0074be;
+    color: #fff;
+    padding: 14px 26px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.25s ease;
+}
+
+.cta-bar__button:hover {
+    background: #084298;
+}
+html, body {
+    overflow-x: hidden;
+    overflow-y: visible !important;
+}
+
+.cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f4f7fb;
+    border-top: 1px solid #e2e6ed;
+    z-index: 99999;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+@media (max-width: 768px) {
+
+    .cta-bar__content {
+        flex-direction: column;     /* xếp dọc */
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+    .cta-bar__features {
+        flex-wrap: wrap;            /* cho phép xuống dòng */
+        justify-content: center;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .cta-bar__features span {
+        white-space: nowrap;        /* tránh gãy chữ */
+    }
+
+    .cta-bar__features .divider {
+        margin: 0 6px;
+    }
+
+    .cta-bar__button {
+        width: 100%;                /* button full width */
+        max-width: 320px;
+        text-align: center;
+        padding: 12px 18px;
+    }
+}
+@media (max-width: 768px) {
+    .usps-list {
+        display: none;
+    }
+}
+
+body {
+    padding-bottom: 90px;
+}
+
+/* POS Intro Section */
+.pos-intro {
+  padding: 20px 0;
+  background: #f4f6f8;
+}
+
+.pos-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;  
+}
+
+.pos-intro-text h2 {
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.pos-intro-text p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.pos-intro-image img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  margin-left: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pos-intro-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pos-intro-image img {
+    margin: 15px auto 0;
+  }
+}
+
